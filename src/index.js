@@ -1,3 +1,5 @@
+import robot from './images/robot.png'
+
 // 创建没有构造函数的类属性
 class Game {
   name = 'Violin Charades'

@@ -33,7 +33,6 @@ module.exports = {
   ],
 
   module: {
-
     rules: [
       // JavaScript
       // 如果是 TypeScript 项目，使用的是 typescript-loader 而不是 babel-loader
@@ -41,7 +40,16 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: ['babel-loader'],
-      }
+      },
+
+      // webpack 有一些内置的 asset modules，可用于静态资源。
+      // 对于图像类型，我们将使用 asset/resource
+      // 注意：这是一个 type，而不是一个 loader
+      // Images
+      {
+        test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+        type: 'asset/resource',
+      },
     ]
   }
 }
