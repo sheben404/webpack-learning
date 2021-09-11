@@ -1,4 +1,5 @@
 import robot from './images/robot.png'
+import example from './images/example.svg'
 
 // 创建没有构造函数的类属性
 class Game {

@@ -44,12 +44,19 @@ module.exports = {
 
       // webpack 有一些内置的 asset modules，可用于静态资源。
       // 对于图像类型，我们将使用 asset/resource
+      // 对于 svg 和字体类型，我们将使用 asset/inline
       // 注意：这是一个 type，而不是一个 loader
+
       // Images
       {
         test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
         type: 'asset/resource',
       },
+      // Fonts and SVGs
+      {
+        test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
+        type: 'asset/inline'
+      }
     ]
   }
 }
