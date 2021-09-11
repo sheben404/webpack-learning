@@ -1,4 +1,5 @@
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: 'development',
@@ -16,5 +17,16 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: '[name].bundle.js'
-  }
+  },
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      // 自定义 html 中的 title
+      title:'webpack Boilerplate',
+      // 作为模板的文件
+      template: path.resolve(__dirname, './src/template.html'),
+      // 作为输出的文件
+      filename: 'index.html'
+    })
+  ]
 }
