@@ -30,5 +30,18 @@ module.exports = {
       filename: 'index.html'
     }),
     new CleanWebpackPlugin(),
-  ]
+  ],
+
+  module: {
+
+    rules: [
+      // JavaScript
+      // 如果是 TypeScript 项目，使用的是 typescript-loader 而不是 babel-loader
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: ['babel-loader'],
+      }
+    ]
+  }
 }
