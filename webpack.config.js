@@ -1,9 +1,20 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const {cleanWebpackPlugin, CleanWebpackPlugin} = require('clean-webpack-plugin')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+const webpack = require('webpack')
+
 
 module.exports = {
   mode: 'development',
+  devServer: {
+    historyApiFallback: true,
+    static: path.resolve(__dirname, './dist'),
+    open: true,
+    compress: true,
+    hot: true,
+    port: 8080,
+  },
+
   // 配置模块的入口，可抽象成输入
   // webpack 执行构建的第一步将从入口开始搜寻及递归解析出所有入口依赖的模块
   // entry 配置是必填的，如果不填则将导致 webpack 报错退出
@@ -30,6 +41,9 @@ module.exports = {
       filename: 'index.html'
     }),
     new CleanWebpackPlugin(),
+
+    // Only update what has changed on hot reload
+    new webpack.HotModuleReplacementPlugin(),
   ],
 
   module: {
